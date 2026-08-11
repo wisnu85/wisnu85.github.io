@@ -1,1 +1,660 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donut Chiby - Imut, Lembut & Lezat!</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Lucide Icons CDN -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Google Fonts: Poppins & Fredoka -->
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        chiby: {
+                            pink: '#FF88A5',
+                            cream: '#FFF9EA',
+                            brown: '#5C3A21',
+                            accent: '#FFB800',
+                            lightpink: '#FFE5EC',
+                            mint: '#A8E6CF',
+                            purple: '#D4A5A5'
+                        }
+                    },
+                    fontFamily: {
+                        fredoka: ['Fredoka', 'sans-serif'],
+                        poppins: ['Poppins', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #FFF9EA;
+        }
+        .title-font {
+            font-family: 'Fredoka', sans-serif;
+        }
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #FFF9EA;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #FF88A5;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body class="text-chiby-brown antialiased selection:bg-chiby-pink selection:text-white pb-20 md:pb-0">
+
+    <!-- Header / Navbar -->
+    <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b-4 border-chiby-lightpink shadow-sm">
+        <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
+            <!-- Logo Brand -->
+            <a href="#" class="flex items-center gap-3 group">
+                <div class="relative w-12 h-12 rounded-full bg-chiby-cream border-2 border-chiby-pink overflow-hidden shadow-inner flex items-center justify-center p-1 group-hover:scale-105 transition-transform">
+                    <img src="PicWish_20260805_171447.jpg" alt="Logo Donut Chiby" class="w-full h-full object-cover rounded-full" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1551024709-8f23befc6f87?w=150&auto=format&fit=crop&q=80';">
+                </div>
+                <div>
+                    <h1 class="title-font text-2xl font-bold text-chiby-brown tracking-wide flex items-center gap-1">
+                        Donut <span class="text-chiby-pink">Chiby</span> 🍩
+                    </h1>
+                    <p class="text-[10px] font-semibold text-chiby-brown/70 -mt-1 tracking-wider">IMUT • LEMBUT • LEZAT</p>
+                </div>
+            </a>
+
+            <!-- Nav Links Desktop -->
+            <nav class="hidden md:flex items-center gap-6 font-medium title-font text-base">
+                <a href="#hero" class="hover:text-chiby-pink transition-colors">Beranda</a>
+                <a href="#katalog" class="hover:text-chiby-pink transition-colors">Katalog Donut</a>
+                <a href="#paket" class="hover:text-chiby-pink transition-colors">Paket Hemat</a>
+                <a href="#lokasi" class="hover:text-chiby-pink transition-colors">Lokasi Store</a>
+                <a href="https://instagram.com/tryputrawisnu" target="_blank" rel="noopener noreferrer" class="flex items-center gap-1.5 text-pink-600 hover:text-pink-700 bg-pink-50 px-3 py-1 rounded-full border border-pink-200 transition">
+                    <i data-lucide="instagram" class="w-4 h-4"></i> @tryputrawisnu
+                </a>
+            </nav>
+
+            <!-- Cart Trigger Button -->
+            <button onclick="toggleCartModal()" class="relative bg-chiby-pink hover:bg-pink-500 text-white p-2.5 px-4 rounded-full font-semibold shadow-md flex items-center gap-2 hover:scale-105 transition-all">
+                <i data-lucide="shopping-bag" class="w-5 h-5"></i>
+                <span class="hidden sm:inline title-font">Keranjang</span>
+                <span id="cart-count" class="bg-chiby-accent text-chiby-brown text-xs font-bold w-6 h-6 rounded-full flex items-center justify-center shadow-inner">0</span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Banner Promo Kontak Cepat WA & IG -->
+    <div class="bg-chiby-pink/15 border-b border-chiby-pink/30 py-2 px-4 text-center text-xs sm:text-sm font-medium text-chiby-brown flex flex-wrap justify-center items-center gap-2 sm:gap-4">
+        <span>🎉 Pesan langsung via WhatsApp tanpa antri!</span>
+        <div class="flex items-center gap-2">
+            <a href="https://wa.me/6285188370985?text=Halo%20saya%20ingin%20pesan%20Donut%20Chiby" target="_blank" rel="noopener noreferrer" class="bg-green-500 text-white px-3 py-1 rounded-full text-xs font-bold hover:bg-green-600 transition flex items-center gap-1 shadow-sm">
+                <i data-lucide="message-circle" class="w-3.5 h-3.5"></i> Chat WA
+            </a>
+            <a href="https://instagram.com/tryputrawisnu" target="_blank" rel="noopener noreferrer" class="bg-gradient-to-r from-purple-500 to-pink-500 text-white px-3 py-1 rounded-full text-xs font-bold hover:opacity-90 transition flex items-center gap-1 shadow-sm">
+                <i data-lucide="instagram" class="w-3.5 h-3.5"></i> Follow IG
+            </a>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section id="hero" class="max-w-6xl mx-auto px-4 py-8 md:py-14 flex flex-col md:flex-row items-center gap-8">
+        <div class="md:w-1/2 space-y-4 text-center md:text-left">
+            <span class="bg-chiby-lightpink text-chiby-pink text-xs sm:text-sm font-bold px-4 py-1.5 rounded-full inline-block title-font shadow-sm border border-chiby-pink/20">
+                ✨ Donut Karakter & Topping Premium Indramayu
+            </span>
+            <h2 class="title-font text-3xl sm:text-5xl font-extrabold leading-tight text-chiby-brown">
+                Senyuman Manis di Setiap Gigitan <span class="text-chiby-pink inline-block animate-bounce">Donut Chiby!</span>
+            </h2>
+            <p class="text-sm sm:text-base text-chiby-brown/80 leading-relaxed max-w-lg">
+                Dibuat segar setiap hari dari bahan berkualitas tinggi, tekstur sangat lembut, dengan desain varian karakter yang lucu dan menggemaskan!
+            </p>
+            <div class="pt-2 flex flex-col sm:flex-row items-center justify-center md:justify-start gap-3">
+                <a href="#katalog" class="w-full sm:w-auto bg-chiby-brown hover:bg-opacity-90 text-white px-7 py-3 rounded-full font-bold title-font shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all flex items-center justify-center gap-2">
+                    <i data-lucide="cookie" class="w-5 h-5"></i> Lihat Katalog Rasa
+                </a>
+                <a href="https://wa.me/6285188370985?text=Halo%20saya%20ingin%20pesan%20Donut%20Chiby" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded-full font-bold title-font shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all flex items-center justify-center gap-2">
+                    <i data-lucide="message-circle" class="w-5 h-5"></i> Order WA Langsung
+                </a>
+            </div>
+        </div>
+        <div class="md:w-1/2 relative flex justify-center">
+            <!-- Hero Mascot / Photo Showcase -->
+            <div class="relative w-full max-w-md aspect-square rounded-3xl overflow-hidden border-8 border-white shadow-2xl bg-chiby-lightpink">
+                <img src="https://images.unsplash.com/photo-1527515637462-cff94eecc1ac?w=800&auto=format&fit=crop&q=80" alt="Aneka Donut Chiby Lucu" class="w-full h-full object-cover hover:scale-105 transition duration-500">
+                <div class="absolute bottom-4 left-4 right-4 bg-white/95 backdrop-blur-md p-3.5 rounded-2xl border border-chiby-pink/30 shadow-lg flex items-center gap-3">
+                    <img src="PicWish_20260805_171447.jpg" alt="Logo Mascot" class="w-12 h-12 rounded-full border-2 border-chiby-pink object-cover shadow" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1551024709-8f23befc6f87?w=150&auto=format&fit=crop&q=80';">
+                    <div>
+                        <p class="title-font font-bold text-chiby-brown text-sm">Donut Chiby Special Edition 🐻</p>
+                        <p class="text-xs text-chiby-brown/70">Tersedia Varian Karakter & Mini Box!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Kategori Filter & Pencarian -->
+    <section id="katalog" class="max-w-6xl mx-auto px-4 pt-10 pb-6">
+        <div class="text-center max-w-xl mx-auto mb-8">
+            <h3 class="title-font text-3xl font-bold text-chiby-brown">Katalog Varian Rasa & Bentuk</h3>
+            <p class="text-sm text-chiby-brown/80 mt-1">Pilih donut favoritmu yang menggemaskan di bawah ini!</p>
+        </div>
+
+        <!-- Search Bar & Filters -->
+        <div class="flex flex-col sm:flex-row items-center justify-between gap-4 mb-8">
+            <!-- Category Buttons -->
+            <div class="flex flex-wrap justify-center gap-2 w-full sm:w-auto" id="category-filters">
+                <button onclick="filterCategory('semua')" class="cat-btn active bg-chiby-pink text-white px-4 py-2 rounded-full text-xs sm:text-sm font-semibold title-font shadow transition-all">Semua Varian</button>
+                <button onclick="filterCategory('karakter')" class="cat-btn bg-white text-chiby-brown hover:bg-chiby-lightpink px-4 py-2 rounded-full text-xs sm:text-sm font-semibold title-font shadow-sm border border-chiby-pink/20 transition-all">🐻 Karakter Lucu</button>
+                <button onclick="filterCategory('klasik')" class="cat-btn bg-white text-chiby-brown hover:bg-chiby-lightpink px-4 py-2 rounded-full text-xs sm:text-sm font-semibold title-font shadow-sm border border-chiby-pink/20 transition-all">🍩 Ring Klasik</button>
+                <button onclick="filterCategory('bomboloni')" class="cat-btn bg-white text-chiby-brown hover:bg-chiby-lightpink px-4 py-2 rounded-full text-xs sm:text-sm font-semibold title-font shadow-sm border border-chiby-pink/20 transition-all">🧁 Bomboloni Lumer</button>
+            </div>
+
+            <!-- Search Input -->
+            <div class="relative w-full sm:w-64">
+                <i data-lucide="search" class="w-4 h-4 absolute left-3.5 top-1/2 -translate-y-1/2 text-chiby-brown/50"></i>
+                <input type="text" id="search-input" onkeyup="searchDonuts()" placeholder="Cari donut..." class="w-full pl-10 pr-4 py-2 rounded-full bg-white border border-chiby-pink/30 focus:outline-none focus:ring-2 focus:ring-chiby-pink text-xs sm:text-sm">
+            </div>
+        </div>
+
+        <!-- Catalog Grid -->
+        <div id="donut-grid" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
+            <!-- Dynamic Content loaded by JavaScript -->
+        </div>
+    </section>
+
+    <!-- Section Paket Hemat Box -->
+    <section id="paket" class="max-w-6xl mx-auto px-4 py-12">
+        <div class="bg-gradient-to-br from-chiby-lightpink/60 to-chiby-cream p-6 sm:p-10 rounded-3xl border-4 border-white shadow-xl">
+            <div class="text-center max-w-xl mx-auto mb-8">
+                <span class="bg-chiby-pink text-white text-xs font-bold px-3 py-1 rounded-full title-font uppercase tracking-wider">Paling Laris</span>
+                <h3 class="title-font text-3xl font-bold text-chiby-brown mt-2">Paket Box Hemat Chiby</h3>
+                <p class="text-sm text-chiby-brown/80 mt-1">Cocok untuk acara ulang tahun, kumpul keluarga, atau kejutan hadiah!</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-6">
+                <!-- Paket 1 -->
+                <div class="bg-white p-5 rounded-2xl shadow-md border border-chiby-pink/20 flex flex-col justify-between hover:shadow-lg transition">
+                    <div>
+                        <div class="h-40 rounded-xl overflow-hidden mb-4 bg-chiby-cream relative">
+                            <img src="https://images.unsplash.com/photo-1551024709-8f23befc6f87?w=500&auto=format&fit=crop&q=80" alt="Paket Mini 6" class="w-full h-full object-cover">
+                            <span class="absolute top-2 right-2 bg-chiby-pink text-white text-[10px] font-bold px-2 py-1 rounded-full">Hemat 10%</span>
+                        </div>
+                        <h4 class="title-font font-bold text-lg text-chiby-brown">Paket Mini Mix (Isi 6)</h4>
+                        <p class="text-xs text-chiby-brown/70 mt-1">6 pcs donut mini varian rasa populer & topping meses, keju, choco glaze.</p>
+                        <p class="title-font text-chiby-pink font-extrabold text-xl mt-3">Rp 25.000</p>
+                    </div>
+                    <button onclick="addToCart('Paket Mini Mix (Isi 6)', 25000, 'https://images.unsplash.com/photo-1551024709-8f23befc6f87?w=500&auto=format&fit=crop&q=80')" class="mt-4 w-full bg-chiby-pink hover:bg-pink-600 text-white py-2.5 rounded-xl font-bold title-font text-sm flex items-center justify-center gap-2 transition">
+                        <i data-lucide="plus-circle" class="w-4 h-4"></i> Tambah Ke Keranjang
+                    </button>
+                </div>
+
+                <!-- Paket 2 -->
+                <div class="bg-white p-5 rounded-2xl shadow-xl border-2 border-chiby-pink relative flex flex-col justify-between transform md:-translate-y-2">
+                    <span class="absolute -top-3 left-1/2 -translate-x-1/2 bg-chiby-accent text-chiby-brown text-xs font-extrabold px-3 py-0.5 rounded-full shadow title-font">BEST SELLER ⭐</span>
+                    <div>
+                        <div class="h-40 rounded-xl overflow-hidden mb-4 bg-chiby-cream relative">
+                            <img src="https://images.unsplash.com/photo-1527515637462-cff94eecc1ac?w=500&auto=format&fit=crop&q=80" alt="Paket Karakter Chiby" class="w-full h-full object-cover">
+                        </div>
+                        <h4 class="title-font font-bold text-lg text-chiby-brown">Box Karakter Cute (Isi 6)</h4>
+                        <p class="text-xs text-chiby-brown/70 mt-1">6 pcs donut beruang, kelinci, panda & pinguin impian anak-anak!</p>
+                        <p class="title-font text-chiby-pink font-extrabold text-xl mt-3">Rp 38.000</p>
+                    </div>
+                    <button onclick="addToCart('Box Karakter Cute (Isi 6)', 38000, 'https://images.unsplash.com/photo-1527515637462-cff94eecc1ac?w=500&auto=format&fit=crop&q=80')" class="mt-4 w-full bg-chiby-pink hover:bg-pink-600 text-white py-2.5 rounded-xl font-bold title-font text-sm flex items-center justify-center gap-2 transition">
+                        <i data-lucide="plus-circle" class="w-4 h-4"></i> Tambah Ke Keranjang
+                    </button>
+                </div>
+
+                <!-- Paket 3 -->
+                <div class="bg-white p-5 rounded-2xl shadow-md border border-chiby-pink/20 flex flex-col justify-between hover:shadow-lg transition">
+                    <div>
+                        <div class="h-40 rounded-xl overflow-hidden mb-4 bg-chiby-cream relative">
+                            <img src="https://images.unsplash.com/photo-1530018607912-eff2daa1bac4?w=500&auto=format&fit=crop&q=80" alt="Paket Party Box 12" class="w-full h-full object-cover">
+                        </div>
+                        <h4 class="title-font font-bold text-lg text-chiby-brown">Party Box Family (Isi 12)</h4>
+                        <p class="text-xs text-chiby-brown/70 mt-1">12 pcs lengkap varian klasik, bomboloni lumer & karakter favorit.</p>
+                        <p class="title-font text-chiby-pink font-extrabold text-xl mt-3">Rp 65.000</p>
+                    </div>
+                    <button onclick="addToCart('Party Box Family (Isi 12)', 65000, 'https://images.unsplash.com/photo-1530018607912-eff2daa1bac4?w=500&auto=format&fit=crop&q=80')" class="mt-4 w-full bg-chiby-pink hover:bg-pink-600 text-white py-2.5 rounded-xl font-bold title-font text-sm flex items-center justify-center gap-2 transition">
+                        <i data-lucide="plus-circle" class="w-4 h-4"></i> Tambah Ke Keranjang
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Informasi Store & Lokasi -->
+    <section id="lokasi" class="max-w-6xl mx-auto px-4 py-8 mb-10">
+        <div class="bg-white rounded-3xl p-6 sm:p-8 border border-chiby-pink/20 shadow-lg flex flex-col md:flex-row gap-8 items-center">
+            <div class="md:w-1/2 space-y-4">
+                <div class="inline-flex items-center gap-2 bg-chiby-cream text-chiby-brown px-3 py-1 rounded-full text-xs font-bold title-font border border-chiby-accent/40">
+                    <i data-lucide="map-pin" class="w-4 h-4 text-chiby-pink"></i> Outlets & Offline Store
+                </div>
+                <h3 class="title-font text-2xl sm:text-3xl font-bold text-chiby-brown">Kunjungi Outlet Donut Chiby</h3>
+                <p class="text-sm text-chiby-brown/80 leading-relaxed">
+                    Kami melayani pembelian langsung di store maupun pesanan via online untuk wilayah Anjatan, Haurgeulis, Patrol, dan sekitarnya!
+                </p>
+
+                <div class="space-y-3 pt-2 text-sm">
+                    <div class="flex items-start gap-3">
+                        <div class="bg-chiby-lightpink p-2 rounded-lg text-chiby-pink mt-0.5">
+                            <i data-lucide="map-pin" class="w-5 h-5"></i>
+                        </div>
+                        <div>
+                            <p class="font-bold text-chiby-brown">Alamat Store:</p>
+                            <p class="text-chiby-brown/80 text-xs sm:text-sm">Jl. Haurgeulis - Patrol Anjatan, Kec. Anjatan, Kabupaten Indramayu, Jawa Barat</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start gap-3">
+                        <div class="bg-chiby-lightpink p-2 rounded-lg text-chiby-pink mt-0.5">
+                            <i data-lucide="clock" class="w-5 h-5"></i>
+                        </div>
+                        <div>
+                            <p class="font-bold text-chiby-brown">Jam Operasional:</p>
+                            <p class="text-chiby-brown/80 text-xs">Buka Setiap Hari: 08:00 - 20:00 WIB</p>
+                        </div>
+                    </div>
+
+                    <!-- Kontak WA -->
+                    <div class="flex items-start gap-3">
+                        <div class="bg-chiby-lightpink p-2 rounded-lg text-chiby-pink mt-0.5">
+                            <i data-lucide="phone" class="w-5 h-5"></i>
+                        </div>
+                        <div>
+                            <p class="font-bold text-chiby-brown">WhatsApp Hotline:</p>
+                            <a href="https://wa.me/6285188370985?text=Halo%20saya%20ingin%20pesan%20Donut%20Chiby" target="_blank" rel="noopener noreferrer" class="text-green-600 font-bold hover:underline text-base inline-flex items-center gap-1.5 bg-green-50 px-3 py-1 rounded-lg border border-green-200 mt-0.5">
+                                <i data-lucide="message-circle" class="w-4 h-4 fill-green-600 text-white"></i> +62 851-8837-0985
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Kontak Instagram -->
+                    <div class="flex items-start gap-3">
+                        <div class="bg-chiby-lightpink p-2 rounded-lg text-chiby-pink mt-0.5">
+                            <i data-lucide="instagram" class="w-5 h-5"></i>
+                        </div>
+                        <div>
+                            <p class="font-bold text-chiby-brown">Instagram Official:</p>
+                            <a href="https://instagram.com/tryputrawisnu" target="_blank" rel="noopener noreferrer" class="text-pink-600 font-bold hover:underline text-base inline-flex items-center gap-1.5 bg-pink-50 px-3 py-1 rounded-lg border border-pink-200 mt-0.5">
+                                <i data-lucide="instagram" class="w-4 h-4"></i> @tryputrawisnu
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pt-2 flex flex-wrap gap-2">
+                    <a href="https://wa.me/6285188370985?text=Halo%20saya%20ingin%20tanya%20lokasi%20dan%20stok%20Donut%20Chiby" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 bg-green-500 hover:bg-green-600 text-white px-5 py-2.5 rounded-full font-bold title-font text-xs sm:text-sm shadow transition">
+                        <i data-lucide="message-circle" class="w-4 h-4"></i> Chat WhatsApp
+                    </a>
+                    <a href="https://instagram.com/tryputrawisnu" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 bg-pink-600 hover:bg-pink-700 text-white px-5 py-2.5 rounded-full font-bold title-font text-xs sm:text-sm shadow transition">
+                        <i data-lucide="instagram" class="w-4 h-4"></i> Kunjungi Instagram
+                    </a>
+                </div>
+            </div>
+
+            <!-- Visual Map Placeholder / Image -->
+            <div class="md:w-1/2 w-full h-64 sm:h-80 rounded-2xl overflow-hidden border-4 border-chiby-cream shadow-inner bg-slate-100 relative flex items-center justify-center">
+                <img src="https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?w=800&auto=format&fit=crop&q=80" alt="Peta Indramayu Anjatan" class="w-full h-full object-cover opacity-60">
+                <div class="absolute inset-0 bg-chiby-brown/20 flex flex-col items-center justify-center p-4 text-center">
+                    <div class="bg-white p-3 rounded-full shadow-lg mb-2 animate-bounce">
+                        <i data-lucide="map-pin" class="w-8 h-8 text-chiby-pink"></i>
+                    </div>
+                    <span class="bg-white/90 text-chiby-brown font-bold title-font px-4 py-1.5 rounded-full text-xs shadow">
+                        Store Anjatan, Indramayu
+                    </span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-chiby-brown text-white py-8 border-t-4 border-chiby-pink">
+        <div class="max-w-6xl mx-auto px-4 text-center space-y-4">
+            <div class="flex items-center justify-center gap-2">
+                <img src="PicWish_20260805_171447.jpg" alt="Logo Donut Chiby" class="w-8 h-8 rounded-full border border-chiby-pink object-cover" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1551024709-8f23befc6f87?w=150&auto=format&fit=crop&q=80';">
+                <span class="title-font text-xl font-bold">Donut Chiby</span>
+            </div>
+            <p class="text-xs text-white/80 max-w-md mx-auto leading-relaxed">
+                Jl. Haurgeulis - Patrol Anjatan, Kec. Anjatan, Kab. Indramayu, Jawa Barat.
+            </p>
+            <div class="flex items-center justify-center gap-4 text-xs font-semibold pt-1">
+                <a href="https://wa.me/6285188370985?text=Halo%20saya%20ingin%20pesan%20Donut%20Chiby" target="_blank" rel="noopener noreferrer" class="hover:text-green-300 flex items-center gap-1">
+                    <i data-lucide="message-circle" class="w-4 h-4"></i> WA: +62 851-8837-0985
+                </a>
+                <span>•</span>
+                <a href="https://instagram.com/tryputrawisnu" target="_blank" rel="noopener noreferrer" class="hover:text-pink-300 flex items-center gap-1">
+                    <i data-lucide="instagram" class="w-4 h-4"></i> IG: @tryputrawisnu
+                </a>
+            </div>
+            <p class="text-xs text-white/50 pt-2 border-t border-white/10">
+                &copy; 2026 Donut Chiby. All Rights Reserved.
+            </p>
+        </div>
+    </footer>
+
+    <!-- Floating Action Button Mobile -->
+    <div class="fixed bottom-4 right-4 z-30 md:hidden flex flex-col gap-2">
+        <a href="https://instagram.com/tryputrawisnu" target="_blank" rel="noopener noreferrer" class="bg-gradient-to-r from-purple-500 to-pink-500 text-white p-3 rounded-full shadow-xl flex items-center justify-center hover:scale-110 transition active:scale-95">
+            <i data-lucide="instagram" class="w-6 h-6"></i>
+        </a>
+        <a href="https://wa.me/6285188370985?text=Halo%20saya%20ingin%20pesan%20Donut%20Chiby" target="_blank" rel="noopener noreferrer" class="bg-green-500 text-white p-3.5 rounded-full shadow-2xl flex items-center justify-center hover:scale-110 transition active:scale-95">
+            <i data-lucide="message-circle" class="w-7 h-7"></i>
+        </a>
+    </div>
+
+    <!-- Modal Keranjang Belanja -->
+    <div id="cart-modal" class="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm hidden flex items-center justify-center p-4">
+        <div class="bg-white w-full max-w-md rounded-3xl overflow-hidden shadow-2xl border-4 border-chiby-lightpink flex flex-col max-h-[85vh]">
+            <!-- Header Modal -->
+            <div class="bg-chiby-lightpink p-4 flex items-center justify-between border-b border-chiby-pink/20">
+                <div class="flex items-center gap-2">
+                    <i data-lucide="shopping-bag" class="w-5 h-5 text-chiby-pink"></i>
+                    <h4 class="title-font font-bold text-lg text-chiby-brown">Keranjang Donut Saya</h4>
+                </div>
+                <button onclick="toggleCartModal()" class="text-chiby-brown/70 hover:text-chiby-brown p-1 rounded-full hover:bg-white/50">
+                    <i data-lucide="x" class="w-5 h-5"></i>
+                </button>
+            </div>
+
+            <!-- List Item Cart -->
+            <div id="cart-items" class="p-4 overflow-y-auto space-y-3 flex-1">
+                <!-- Cart Content Dynamic -->
+            </div>
+
+            <!-- Form Detail Pemesan & Total -->
+            <div class="p-4 bg-chiby-cream border-t border-chiby-pink/20 space-y-3">
+                <div>
+                    <label class="block text-xs font-bold text-chiby-brown mb-1">Nama Pemesan:</label>
+                    <input type="text" id="cust-name" placeholder="Contoh: Budi / Anisa" class="w-full px-3 py-1.5 rounded-xl border border-chiby-pink/30 text-xs focus:outline-none focus:ring-1 focus:ring-chiby-pink">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-chiby-brown mb-1">Catatan Pesanan / Metode (Pick Up / Delivery):</label>
+                    <input type="text" id="cust-notes" placeholder="Contoh: Ambil jam 2 siang / Delivery Anjatan" class="w-full px-3 py-1.5 rounded-xl border border-chiby-pink/30 text-xs focus:outline-none focus:ring-1 focus:ring-chiby-pink">
+                </div>
+
+                <div class="flex items-center justify-between pt-2 border-t border-chiby-brown/10">
+                    <span class="title-font font-bold text-sm text-chiby-brown">Total Pembayaran:</span>
+                    <span id="cart-total" class="title-font font-extrabold text-xl text-chiby-pink">Rp 0</span>
+                </div>
+
+                <!-- Action Direct WA Button -->
+                <button onclick="sendOrderToWhatsApp()" class="w-full bg-green-500 hover:bg-green-600 text-white py-3 rounded-2xl font-bold title-font text-sm flex items-center justify-center gap-2 shadow-lg transition hover:scale-[1.01]">
+                    <i data-lucide="message-circle" class="w-5 h-5"></i> Kirim Pesanan ke WhatsApp
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script Data & Fungsi Interaktif -->
+    <script>
+        // Data Katalog Donut Chiby
+        const donutData = [
+            {
+                id: 1,
+                nama: "Donut Chiby Bear 🐻",
+                kategori: "karakter",
+                harga: 7000,
+                deskripsi: "Bentuk kepala beruang cute dengan rasa cokelat glazed dan telinga biskuit renyah.",
+                gambar: "https://images.unsplash.com/photo-1527515637462-cff94eecc1ac?w=500&auto=format&fit=crop&q=80"
+            },
+            {
+                id: 2,
+                nama: "Donut Unicorn Magic 🦄",
+                kategori: "karakter",
+                harga: 8000,
+                deskripsi: "Glaze taro ungu lembut dipadukan dengan cula marshmallow manis.",
+                gambar: "https://images.unsplash.com/photo-1551024709-8f23befc6f87?w=500&auto=format&fit=crop&q=80"
+            },
+            {
+                id: 3,
+                nama: "Donut Bunny Pink 🐰",
+                kategori: "karakter",
+                harga: 7000,
+                deskripsi: "Rasa strawberry manis segar bentuk kelinci dengan topping meses rainbow.",
+                gambar: "https://images.unsplash.com/photo-1530018607912-eff2daa1bac4?w=500&auto=format&fit=crop&q=80"
+            },
+            {
+                id: 4,
+                nama: "Chiby Mascot Donut 🍩",
+                kategori: "karakter",
+                harga: 8000,
+                deskripsi: "Varian signature sesuai mascot Donut Chiby topping cokelat hazelnut renyah.",
+                gambar: "https://images.unsplash.com/photo-1626094309830-abbb0c99da4a?w=500&auto=format&fit=crop&q=80"
+            },
+            {
+                id: 5,
+                nama: "Choco Rainbow Sprinkles",
+                kategori: "klasik",
+                harga: 5000,
+                deskripsi: "Donut cincin klasik dengan lelehan cokelat Belgian & meses warna-warni.",
+                gambar: "https://images.unsplash.com/photo-1514517521153-1be72277b32f?w=500&auto=format&fit=crop&q=80"
+            },
+            {
+                id: 6,
+                nama: "Matcha Green Tea Glaze",
+                kategori: "klasik",
+                harga: 6000,
+                deskripsi: "Balutan green tea manis autentik dan taburan almond panggang gurih.",
+                gambar: "https://images.unsplash.com/photo-1533134242443-d4fd215305ad?w=500&auto=format&fit=crop&q=80"
+            },
+            {
+                id: 7,
+                nama: "Pon-de-Ring Bunga Strawberry",
+                kategori: "klasik",
+                harga: 6500,
+                deskripsi: "Bentuk kelopak bunga empuk kenyal ala mochi dengan glaze strawberry.",
+                gambar: "https://images.unsplash.com/photo-1551024709-8f23befc6f87?w=500&auto=format&fit=crop&q=80"
+            },
+            {
+                id: 8,
+                nama: "Bomboloni Nutella Lumer",
+                kategori: "bomboloni",
+                harga: 7500,
+                deskripsi: "Donut tanpa lubang melimpah isi pasta cokelat Nutella asli melted di mulut.",
+                gambar: "https://images.unsplash.com/photo-1530018607912-eff2daa1bac4?w=500&auto=format&fit=crop&q=80"
+            },
+            {
+                id: 9,
+                nama: "Bomboloni Cream Cheese Tiramisu",
+                kategori: "bomboloni",
+                harga: 8000,
+                deskripsi: "Isi krim keju tiramisu melimpah dengan taburan bubuk cokelat di atasnya.",
+                gambar: "https://images.unsplash.com/photo-1527515637462-cff94eecc1ac?w=500&auto=format&fit=crop&q=80"
+            }
+        ];
+
+        // Cart State
+        let cart = [];
+
+        // Render Katalog
+        function renderKatalog(items) {
+            const grid = document.getElementById('donut-grid');
+            grid.innerHTML = '';
+
+            if (items.length === 0) {
+                grid.innerHTML = `
+                    <div class="col-span-full text-center py-10 text-chiby-brown/60">
+                        <i data-lucide="frown" class="w-10 h-10 mx-auto mb-2 stroke-1"></i>
+                        <p class="title-font text-lg font-bold">Donut tidak ditemukan</p>
+                        <p class="text-xs">Coba cari kata kunci lain ya!</p>
+                    </div>
+                `;
+                lucide.createIcons();
+                return;
+            }
+
+            items.forEach(item => {
+                const card = document.createElement('div');
+                card.className = "bg-white rounded-2xl p-3 sm:p-4 border border-chiby-pink/20 shadow-md hover:shadow-xl transition-all duration-300 flex flex-col justify-between group";
+                card.innerHTML = `
+                    <div>
+                        <div class="relative w-full aspect-square rounded-xl overflow-hidden bg-chiby-cream mb-3">
+                            <img src="${item.gambar}" alt="${item.nama}" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                            <span class="absolute top-2 left-2 bg-white/90 backdrop-blur-md text-chiby-brown text-[10px] font-bold px-2 py-0.5 rounded-full capitalize border border-chiby-pink/20">
+                                ${item.kategori}
+                            </span>
+                        </div>
+                        <h4 class="title-font font-bold text-sm sm:text-base text-chiby-brown line-clamp-1">${item.nama}</h4>
+                        <p class="text-[11px] sm:text-xs text-chiby-brown/70 mt-1 line-clamp-2">${item.deskripsi}</p>
+                    </div>
+                    <div class="mt-3 pt-2 border-t border-chiby-cream flex items-center justify-between">
+                        <span class="title-font font-extrabold text-sm sm:text-base text-chiby-pink">Rp ${item.harga.toLocaleString('id-ID')}</span>
+                        <button onclick="addToCart('${item.nama.replace(/'/g, "\\'")}', ${item.harga}, '${item.gambar}')" class="bg-chiby-pink hover:bg-pink-600 text-white p-2 rounded-xl shadow-sm transition active:scale-95 flex items-center justify-center">
+                            <i data-lucide="plus" class="w-4 h-4"></i>
+                        </button>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+            lucide.createIcons();
+        }
+
+        // Filter Kategori
+        function filterCategory(category) {
+            const buttons = document.querySelectorAll('.cat-btn');
+            buttons.forEach(btn => {
+                btn.classList.remove('bg-chiby-pink', 'text-white');
+                btn.classList.add('bg-white', 'text-chiby-brown');
+            });
+            event.target.classList.remove('bg-white', 'text-chiby-brown');
+            event.target.classList.add('bg-chiby-pink', 'text-white');
+
+            if (category === 'semua') {
+                renderKatalog(donutData);
+            } else {
+                const filtered = donutData.filter(d => d.kategori === category);
+                renderKatalog(filtered);
+            }
+        }
+
+        // Search Donut
+        function searchDonuts() {
+            const query = document.getElementById('search-input').value.toLowerCase();
+            const filtered = donutData.filter(d => 
+                d.nama.toLowerCase().includes(query) || 
+                d.deskripsi.toLowerCase().includes(query)
+            );
+            renderKatalog(filtered);
+        }
+
+        // Cart Functions
+        function addToCart(nama, harga, gambar) {
+            const existing = cart.find(item => item.nama === nama);
+            if (existing) {
+                existing.qty += 1;
+            } else {
+                cart.push({ nama, harga, gambar, qty: 1 });
+            }
+            updateCartUI();
+            
+            const btn = event.currentTarget;
+            btn.classList.add('bg-green-500');
+            setTimeout(() => btn.classList.remove('bg-green-500'), 300);
+        }
+
+        function updateQty(index, delta) {
+            cart[index].qty += delta;
+            if (cart[index].qty <= 0) {
+                cart.splice(index, 1);
+            }
+            updateCartUI();
+        }
+
+        function updateCartUI() {
+            const cartItemsContainer = document.getElementById('cart-items');
+            const cartCount = document.getElementById('cart-count');
+            const cartTotal = document.getElementById('cart-total');
+
+            const totalItems = cart.reduce((sum, item) => sum + item.qty, 0);
+            cartCount.innerText = totalItems;
+
+            const totalPrice = cart.reduce((sum, item) => sum + (item.harga * item.qty), 0);
+            cartTotal.innerText = `Rp ${totalPrice.toLocaleString('id-ID')}`;
+
+            cartItemsContainer.innerHTML = '';
+            if (cart.length === 0) {
+                cartItemsContainer.innerHTML = `
+                    <div class="text-center py-8 text-chiby-brown/50">
+                        <i data-lucide="shopping-bag" class="w-12 h-12 mx-auto mb-2 stroke-1"></i>
+                        <p class="title-font text-sm font-bold">Keranjang masih kosong</p>
+                        <p class="text-xs mt-1">Pilih donut impianmu sekarang!</p>
+                    </div>
+                `;
+            } else {
+                cart.forEach((item, index) => {
+                    const itemEl = document.createElement('div');
+                    itemEl.className = "flex items-center justify-between gap-3 bg-chiby-cream/60 p-2.5 rounded-2xl border border-chiby-pink/10";
+                    itemEl.innerHTML = `
+                        <img src="${item.gambar}" alt="${item.nama}" class="w-12 h-12 rounded-xl object-cover">
+                        <div class="flex-1 min-w-0">
+                            <p class="title-font font-bold text-xs text-chiby-brown truncate">${item.nama}</p>
+                            <p class="text-[11px] text-chiby-pink font-bold">Rp ${(item.harga * item.qty).toLocaleString('id-ID')}</p>
+                        </div>
+                        <div class="flex items-center gap-1.5 bg-white px-2 py-1 rounded-xl border border-chiby-pink/20">
+                            <button onclick="updateQty(${index}, -1)" class="text-chiby-brown hover:text-chiby-pink text-xs font-bold w-5 h-5 flex items-center justify-center">-</button>
+                            <span class="text-xs font-bold text-chiby-brown px-1">${item.qty}</span>
+                            <button onclick="updateQty(${index}, 1)" class="text-chiby-brown hover:text-chiby-pink text-xs font-bold w-5 h-5 flex items-center justify-center">+</button>
+                        </div>
+                    `;
+                    cartItemsContainer.appendChild(itemEl);
+                });
+            }
+            lucide.createIcons();
+        }
+
+        function toggleCartModal() {
+            const modal = document.getElementById('cart-modal');
+            modal.classList.toggle('hidden');
+        }
+
+        // Send Order to WhatsApp Application
+        function sendOrderToWhatsApp() {
+            if (cart.length === 0) {
+                alert("Keranjang belanja kamu masih kosong!");
+                return;
+            }
+
+            const custName = document.getElementById('cust-name').value.trim() || 'Pelanggan Chiby';
+            const custNotes = document.getElementById('cust-notes').value.trim() || '-';
+            const phone = "6285188370985";
+
+            let text = `Halo saya ingin pesan Donut Chiby 🍩\n\n`;
+            text += `👤 *Nama:* ${custName}\n`;
+            text += `📍 *Alamat Store:* Jl. Haurgeulis - Patrol Anjatan, Kec. Anjatan, Indramayu\n`;
+            text += `📝 *Catatan/Metode:* ${custNotes}\n\n`;
+            text += `🛒 *Rincian Pesanan:*\n`;
+
+            let grandTotal = 0;
+            cart.forEach((item, i) => {
+                const subtotal = item.harga * item.qty;
+                grandTotal += subtotal;
+                text += `${i + 1}. ${item.nama} (${item.qty}x) = Rp ${subtotal.toLocaleString('id-ID')}\n`;
+            });
+
+            text += `\n💰 *Total Pembayaran:* Rp ${grandTotal.toLocaleString('id-ID')}\n\n`;
+            text += `Mohon konfirmasi pesanan dan ketersediaan stok ya, terima kasih! ✨`;
+
+            const encodedText = encodeURIComponent(text);
+            const waUrl = `https://wa.me/${phone}?text=${encodedText}`;
+            window.open(waUrl, '_blank');
+        }
+
+        // Initial Load
+        document.addEventListener('DOMContentLoaded', () => {
+            renderKatalog(donutData);
+            lucide.createIcons();
+        });
+    </script>
+</body>
+</html>
+
 
